@@ -1,4 +1,4 @@
-# COMP6080
+# COMP6080 Web Front-End Programming
 
 Here, you will find the contents used in my tutorials :)
 
