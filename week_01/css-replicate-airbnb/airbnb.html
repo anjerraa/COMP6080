@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css-replicate-airbnb</title>
+  <style>
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: #484848;
+      margin: 20px;
+    }
+    #buttons-div {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin: 36px 0px 68px 0px;
+    }
+    .button {
+      height: 45px;
+      padding: 0px 22px 0px 22px;
+      font-size: medium;
+      font-weight: bolder;
+      border: none;
+      border-radius: 4px;
+    }
+    #button-login {
+      background-color: #008489;
+      color: white;
+    }
+    #button-signup {
+      background-color: white;
+      border: 2px #008489 solid;
+      color: #008489;
+    }
+    hr {
+      height: 1.5px;
+      background-color: #eeeeee;
+      border: none;
+    }
+    #articles-div {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Log in to contact us</h1>
+  <p>This will help us quickly identify you and get you the right kind of help</p>
+  <div id="buttons-div">
+    <button class="button" id="button-login">Login</button>
+    <button class="button" id="button-signup">Sign Up</button>
+  </div>
+  <hr/>
+  <h2>These articles might help</h2>
+  <div id="articles-div">
+    <div>
+      <h3>Getting started</h3>
+      <p>How do I create an account?</p>
+      <p>Airbnb Referral Program Terms and Conditions</p>
+      <p>How do I search for a place to stay?</p>
+      <p>How do I contact a host before booking a reservation?</p>
+    </div>
+    <div>
+      <h3>Your account</h3>
+      <p>How do I reset or change my password?</p>
+      <p>How do I edit, remove, or add a payment method?</p>
+      <p>How do I edit or change my payout method?</p>
+      <p>How do I deactivate or delete my account?</p>
+    </div>
+  </div>
+</body>
+</html>
