@@ -1,0 +1,52 @@
+body {
+  font-family: sans-serif;
+  color: #333333;
+  margin: 80px 20px;
+}
+
+#header > img {
+  width: 100%;
+}
+
+#header > .card {
+  position: relative;
+  left: 16px;
+  bottom: 32px;
+  width: calc(100% - 16px);
+  box-sizing: border-box;
+}
+
+#header > .card > .footnote {
+  margin-top: 90px;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 120px;
+  font-size: 1.6rem;
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.card {
+  background-color: #F2F2F2;
+  padding: 24px;
+}
+
+.card > h3 {
+  margin-top: 12px;
+  font-size: 1.6rem;
+}
+
+.card > p {
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+}
+
+.footnote {
+  text-align: right;
+}
