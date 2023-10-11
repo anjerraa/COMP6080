@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Form</title>
+  </head>
+  <body>
+    <form action="" method="get">
+      <label for="first-name">First name:</label>
+      <input type="text" name="first-name" id="first-name"/>
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="email"/>
+      <input disabled="true" type="submit" name="submit" id="submit"/>
+    </form>
+    <script type="text/javascript">
+      const isValidFirstName = (firstName) => {
+        const length = firstName.length;
+        const pattern = new RegExp(/^[a-zA-Z]+$/);
+        if (2 <= length && length <= 20 && pattern.test(firstName)) {
+          return true;
+        }
+        return false;
+      }
+      const isValidEmail = (email) => {
+        const pattern = new RegExp(/.+\@.+\..+/);
+        if (pattern.test(email)) {
+          return true;
+        }
+        return false;
+      }
+
+      firstName = document.getElementById("first-name");
+      email = document.getElementById("email");
+      submit = document.getElementById("submit");
+
+      const checkValidity = () => {
+        if (isValidFirstName(firstName.value) && isValidEmail(email.value)) {
+          submit.removeAttribute("disabled");
+        } else {
+          submit.setAttribute("disabled", "true");
+        }
+      }
+
+      firstName.addEventListener("keyup", checkValidity)
+      email.addEventListener("keyup", checkValidity)
+
+      firstName.addEventListener("focus", () => {
+        firstName.style.background = "none";
+      })
+
+      firstName.addEventListener("blur", () => {
+        if (!isValidFirstName(firstName.value)) {
+          firstName.style.background = "#EA5252";
+        }
+      })
+
+      email.addEventListener("focus", () => {
+        email.style.background = "none";
+      })
+
+      email.addEventListener("blur", () => {
+        if (!isValidEmail(email.value)) {
+          email.style.background = "#EA5252";
+        }
+      })
+    </script>
+  </body>
+</html>
