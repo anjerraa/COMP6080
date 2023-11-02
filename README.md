@@ -23,3 +23,7 @@ https://angellaa.notion.site/Week-05-cd99e8922a07469393819316c3a223e3
 ### 🐸 Week 07:
 
 https://angellaa.notion.site/Week-07-6fde1dcb6f794ba6826ba0006ff5face
+
+### 🌷 Week 08:
+
+https://angellaa.notion.site/Week-08-512195d2e85043afbe6de5462b860d8d
