@@ -3,55 +3,55 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #F3F3F3;
+  text-align: center;
   width: 100vw;
   height: 100vh;
+  background-color: #F3F3F3;
 }
 
 #board {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-sizing: border-box;
+  width: 500px;
+  height: 500px;
   background-color: white;
-  width: 640px;
-  height: 640px;
   border: 10px solid white;
-  border-radius: 8px;
 }
 
 .row {
   display: flex;
-  box-sizing: border-box;
+  flex-direction: row;
   gap: 10px;
 }
 
-.normal {
-  width: 200px;
-  height: 200px;
-  border: none;
+.normal-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 160px;
   background-color: #F3F3F3;
   font-size: 2rem;
   font-weight: bold;
   color: #404040;
-  border-radius: 8px;
 }
 
-.win {
-  width: 200px;
-  height: 200px;
-  border: none;
-  background-color: green;
+.win-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 160px;
+  background-color: forestgreen;
   font-size: 2rem;
   font-weight: bold;
   color: white;
-  border-radius: 8px;
 }
 
 #winner {
-  padding: 10px;
   background-color: white;
+  padding: 10px;
   min-width: 200px;
-  border-radius: 8px;
-  text-align: center;
 }
+

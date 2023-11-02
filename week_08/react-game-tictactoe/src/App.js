@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
+const SIZE = 3;
+
 function App() {
   const emptyBoard = [
     ['', '', ''],
@@ -10,76 +12,77 @@ function App() {
 
   const [board, setBoard] = useState(emptyBoard);
   const [player, setPlayer] = useState('O');
-  const [winningSquares, setwinningSquares] = useState([]);
+  const [winningSquares, setWinningSquares] = useState([]);
   const [winner, setWinner] = useState('');
 
-  const checkWinner = () => {
-    if (checkWinConditions('O')) {
-      setWinner('O');
-    } else if (checkWinConditions('X')) {
-      setWinner('X');
+  //Handles local storage win counts
+  const setWinCount = (winPlayer) => {
+    if (winPlayer === 'X'){
+      let winCount = localStorage.getItem("player_X_win_count");
+      localStorage.setItem("player_X_win_count", winCount ? parseInt(winCount) + 1 : 1);
+    } else {
+      let winCount = localStorage.getItem("player_O_win_count");
+      localStorage.setItem("player_O_win_count", winCount ? parseInt(winCount) + 1 : 1);
     }
   }
 
-  const checkWinConditions = (player) => {
-    // Check rows
-    for (const r in board) {
+  const checkWinner = () => {
+    // 1. check the rows
+    for (let r = 0; r < SIZE; r++) {
       let count = 0;
       let coordinates = [];
-      for (const c in board[r]) {
+      for (let c = 0; c < SIZE; c++) {
         if (board[r][c] === player) {
           count++;
           coordinates.push([r, c]);
         }
       }
-      if (count === 3) {
-        setwinningSquares(coordinates);
+      if (count === SIZE) {
+        setWinningSquares(coordinates);
         return true;
       }
     }
 
-    // Check columns
-    for (const c in board) {
+    // 2. check the columns
+    for (let c = 0; c < SIZE; c++) {
       let count = 0;
       let coordinates = [];
-      for (const r in board[c]) {
+      for (let r = 0; r < SIZE; r++) {
         if (board[r][c] === player) {
           count++;
           coordinates.push([r, c]);
         }
       }
-      if (count === 3) {
-        setwinningSquares(coordinates);
+      if (count === SIZE) {
+        setWinningSquares(coordinates);
         return true;
       }
     }
 
-    // Check diagonals
-    // (0,0) (1,1) (2,2)
+    // 3. check the diagonals
     let count = 0;
     let coordinates = [];
-    for (const i in board) {
+    for (let i = 0; i < SIZE; i++) {
       if (board[i][i] === player) {
         count++;
         coordinates.push([i, i]);
       }
     }
-    if (count === 3) {
-      setwinningSquares(coordinates);
+    if (count === SIZE) {
+      setWinningSquares(coordinates);
       return true;
     }
 
-    // (0,2) (1,1) (2,0)
     count = 0;
     coordinates = [];
-    for (let r = 0, c = board[0].length - 1; r < board[0].length && c >= 0; r++, c--) {
-        if (board[r][c] === player) {
-          count++;
-          coordinates.push([r, c]);
-        }
+    for (let r = 0, c = SIZE - 1; r < SIZE && c >= 0; r++, c--) {
+      if (board[r][c] === player) {
+        count++;
+        coordinates.push([r, c]);
+      }
     }
-    if (count === 3) {
-      setwinningSquares(coordinates);
+    if (count === SIZE) {
+      setWinningSquares(coordinates);
       return true;
     }
 
@@ -91,16 +94,18 @@ function App() {
     let newBoard = board;
     newBoard[r][c] = player;
     setBoard(newBoard);
-    checkWinner();
+    if (checkWinner()) {
+      setWinner(player);
+      setWinCount(player);
+    }
     setPlayer(player === "O" ? "X" : "O");
   }
 
-  const checkWinningCell = (r, c) => {
-    let win = false;
-    winningSquares.forEach((s) => {
-      if (s[0] === r && s[1] === c) win = true;
-    })
-    return win === true? 'win' : 'normal';
+  const checkWinningSquare = (r, c) => {
+    if (winningSquares.some(square => square[0] === r && square[1] === c)) {
+      return 'win-square';
+    }
+    return 'normal-square';
   }
 
   return (
@@ -108,10 +113,19 @@ function App() {
       <div id="board">
         {board.map((row, r) => {
           return (
-            <div className="row">
+            <div 
+              className='row'
+              key={`row-${r}`}
+            >
               {row.map((value, c) => {
                 return (
-                  <button className={checkWinningCell(r, c)} onClick={() => setSquare(r, c)}>{value}</button>
+                  <div 
+                    className={checkWinningSquare(r, c)}
+                    onClick={() => setSquare(r, c)}
+                    key={`square-(${r},${c})`}
+                  >
+                    {value}
+                  </div>
                 )
               })}
             </div>
