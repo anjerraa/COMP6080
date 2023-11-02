@@ -1,0 +1,57 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F3F3F3;
+  width: 100vw;
+  height: 100vh;
+}
+
+#board {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+  background-color: white;
+  width: 640px;
+  height: 640px;
+  border: 10px solid white;
+  border-radius: 8px;
+}
+
+.row {
+  display: flex;
+  box-sizing: border-box;
+  gap: 10px;
+}
+
+.normal {
+  width: 200px;
+  height: 200px;
+  border: none;
+  background-color: #F3F3F3;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #404040;
+  border-radius: 8px;
+}
+
+.win {
+  width: 200px;
+  height: 200px;
+  border: none;
+  background-color: green;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+}
+
+#winner {
+  padding: 10px;
+  background-color: white;
+  min-width: 200px;
+  border-radius: 8px;
+  text-align: center;
+}
